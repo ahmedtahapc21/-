@@ -1,25 +1,4 @@
-<?php
-session_start();
 
-// 🛑 الحماية الحديدية: التأكد من تسجيل الدخول ومروره بصفحة الـ index أولاً بالترتيب
-if (!isset($_SESSION['student_id']) || !isset($_SESSION['allowed_to_videos'])) {
-    // لو حاول ينط باللينك مباشر، اطرده لصفحة تسجيل الدخول فوراً
-    header("Location: login.php");
-    exit;
-}
-
-$student_grade = $_SESSION['grade_id']; // الحصول على سنة الطالب الدراسية من الـ Session
-$student_name  = $_SESSION['student_name']; // اسم الطالب للترحيب به
-
-// 2. الاتصال بقاعدة البيانات الموحدة
-$mysqli = new mysqli("localhost", "root", "", "education_platform");
-if ($mysqli->connect_error) {
-    die("فشل الاتصال بقاعدة البيانات: " . $mysqli->connect_error);
-}
-
-// تعيين الترميز لدعم اللغة العربية بشكل صحيح
-$mysqli->set_charset("utf8mb4");
-?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
