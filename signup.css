@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: linear-gradient(
+    to right,
+  #00478a 0%,     /* أزرق */
+  #89c6ff9e 33.33%, /* نهاية الأزرق */
+  #FFFFFF 33.33%, /* بداية الأبيض */
+  #FFFFFF 66.66%, /* نهاية الأبيض */
+  #ef413586 66.66%, /* بداية الأحمر */
+  #EF4135 100%    /* نهاية الأحمر */
+);
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+}
+
+
+.box-form {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+      width: 400px;
+      text-align: right;
+    }
+
+    .box-form h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: red;
+    }
+
+    .box-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 15px;
+      color: #333;
+    }
+
+    .box-form input {
+      text-align: right;  
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+     .form-control:focus{
+       outline: none;
+        border: 2px solid rgba(0, 0, 255, 0.779);
+        box-shadow:0 0 6px rgba(0, 0, 255, 0.779) ;
+    } 
+    .box-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #0db8de;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .login-box button:hover {
+      background-color: #0095c7;
+    }
+
+    .login-box p {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .login-box a {
+      color: #0db8de;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-box a:hover {
+      text-decoration: underline;}
+      p , a {
+        text-align: center;
+        margin-top: 10px;
+      }
+      @media (max-width: 600px) {
+  .box-form {
+    width: 100%;
+    padding: 20px;
+  }
+
+  input, button {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* الميديا كويري: للشاشات المتوسطة (تابلت) */
+@media (min-width: 601px) and (max-width: 992px) {
+  .box-form {
+    width: 100%;
+  }
+}

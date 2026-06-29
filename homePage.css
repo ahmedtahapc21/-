@@ -1,0 +1,692 @@
+@import url("https://fonts.googleapis.com/css2?family=Oi&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.Navbar-h1 {
+  text-decoration: none;
+}
+.Navbar-h1 h1 {
+  color: #e9d9b6e9;
+  font-size: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+.Navbar {
+  position: relative;
+  position: fixed;
+  z-index: 1000;
+  /* يجب تحديد لون الخلفية */
+  margin: auto;
+  max-width: 1200px;
+  width: 100%;
+  /* === الخصائص الأساسية الصحيحة === */
+  display: flex;
+  align-items: center; /* توسيط رأسي للعناصر */
+  height: 85px; /* تحديد ارتفاع شريط التنقل */
+  padding: 0 30px; /* مسافة داخلية من الجوانب */
+  box-shadow: 0 0 10px gray; /* ظل مناسب */
+  direction: rtl; /* لضمان الاتجاه من اليمين لليسار */
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.Navbar-a {
+  text-decoration: none;
+  margin: 0 15px; /* مسافة مناسبة بين الروابط */
+  color: black;
+}
+.Navbar-a:hover {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.3s ease; /* عشان الحركة تكون ناعمة */
+}
+
+.Navbar a:nth-child(3) {
+  /* هذا يحدد رابط "انشاء حساب" */
+  margin-left: auto;
+  margin-right: 15px; /* لإعادة المسافة بين "انشاء حساب" و "تسجيل الدخول" */
+}
+
+.abtn .btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 30px 0 0; /* يمكنك إضافة مسافة بسيطة على يمين الزر إذا لزم الأمر */
+}
+.abtn .btn:hover {
+  color: white;
+  background-color: blue;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px blue;
+}
+#home {
+  /* background: url("image/waves-bg-teal.png") center no-repeat;
+  box-sizing: 100%; */
+  background-color: #bf092f;
+  height: 100vh;
+}
+.container {
+  /* background-color:  #e9d9b6; */
+  height: 100vh;
+  border-radius: 50px;
+}
+.content {
+  /* background-color:  #e9d9b6; */
+  color: #132440;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  top: 29vh;
+}
+.h1 {
+  font-weight: bold;
+  color: #132440;
+  font-size: 70px;
+}
+span {
+  color: #e9d9b6e9;
+}
+
+p {
+  font-weight: bold;
+  font-size: 25px;
+}
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 30px 0 0;
+}
+.grid1 {
+    display: grid
+;
+    grid-template-columns: repeat(2, auto);
+    padding: 16px;
+    gap: 37px;
+
+}
+.teacher-card1{
+  height: 100px;
+  width: 150px;
+;
+
+}
+
+.teacher-card1 img{
+  width: 400px;
+  height: 350px;
+
+}
+.Teacher-text {
+  color: #bf092f;
+
+
+}
+button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+}
+#details {
+  background-color: whitesmoke;
+  padding-top: 50px;
+  height: 60vh;
+}
+.content-details {
+  direction: rtl;
+  font-weight: bold;
+  align-items: center;
+  text-align: center;
+}
+.content-details-h1 {
+  color: black;
+}
+.content-details-p {
+  color: rgba(0, 0, 0, 0.562);
+  font-size: 20px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(150px, 1fr));
+  gap: 10px;
+}
+.card {
+  display: inline-block;
+  align-items: center;
+  height: 150px;
+  width: 170px;
+  text-align: center;
+  align-content: center;
+  transition: all 1s ease;
+  border-radius: 10px;
+
+  cursor: grab;
+  color: black;
+}
+.card:hover {
+  transform: translateY(2px);
+  border: 2px solid blue;
+}
+.fa-solid {
+  text-align: center;
+}
+
+.content-details-card-p {
+  font-size: 18px;
+  padding: 10px;
+}
+i {
+  padding-top: 12px;
+  color: blue;
+}
+/* @media (max-width: 1024px) {
+    .home {
+        align-items: center;
+        padding: 85px;
+        text-align: center;
+    }
+} */
+#end {
+  height: 70vh;
+  background-color: whitesmoke;
+}
+.login {
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+  position: relative;
+  top: 50px;
+  height: 300px;
+  width: 99%;
+  background-color: #16476a;
+  border-radius: 20px;
+  direction: rtl;
+}
+.login-h1 {
+  margin-bottom: 23px;
+  color: white;
+}
+.login-p {
+  font-size: 19px;
+  color: white;
+  padding: 10px;
+}
+#footer {
+  background-color: white;
+}
+.About {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  direction: rtl;
+  gap: 20px;
+  padding: 15px 11px 10px 11px;
+}
+
+.icons {
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+  margin: 0 15px;
+  transition: all 0.4s ease;
+}
+
+.icons:hover {
+  transform: scale(1.3) translateY(-5px);
+  color: #007bff;
+}
+
+.fa-facebook:hover {
+  color: #1877f2;
+}
+
+.fa-linkedin-in:hover {
+  color: #0a66c2;
+}
+
+.fa-instagram:hover {
+  color: #e4405f;
+}
+.about1 {
+  display: flex;
+  flex-direction: column; /* تخلي كل العناصر جوه العمود تحت بعض */
+  gap: 8px; /* مسافة بسيطة بين العناصر */
+}
+
+.About2-h2 {
+  font-size: 16px;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.About1-p {
+  font-size: 13px;
+  font-family: "Courier New", Courier, monospace;
+  color: #333;
+}
+
+/* روابط العمود */
+.about1 a {
+  display: block; /* يخلي كل رابط تحت التاني */
+  text-decoration: none;
+  color: black;
+  font-size: 13px;
+  padding: 6px 0;
+  transition: all 0.3s ease;
+}
+
+.about1 a:hover {
+  color: blue;
+  transform: translateX(-5px); /* حركة بسيطة عند الهوفر */
+}
+
+.About1-p1 {
+  font-size: 12px;
+  color: black;
+}
+
+.About1-p1 span {
+  font-size: 15px;
+  color: black;
+}
+
+.p p {
+  display: flex;
+
+  justify-content: center;
+  text-align: center;
+  font-size: 10px;
+}
+
+/* ===================== */
+/* 📱 Responsive Design */
+/* ===================== */
+
+/* التابلت (شاشات متوسطة) */
+@media (max-width: 992px) {
+  .About {
+    grid-template-columns: repeat(2, 1fr); /* عمودين بدل 3 */
+    gap: 15px;
+  }
+
+  .About1-h2 {
+    font-size: 15px;
+  }
+
+  .about1 a {
+    font-size: 12px;
+  }
+}
+
+/* الموبايل (شاشات صغيرة جدًا) */
+@media (max-width: 600px) {
+  .About {
+    grid-template-columns: 1fr; /* عمود واحد */
+    text-align: right; /* لأن الموقع RTL */
+  }
+
+  .about1 {
+    align-items: flex-start;
+  }
+
+  .About1-h2 {
+    font-size: 14px;
+  }
+
+  .about1 a {
+    font-size: 12px;
+    padding: 5px 0;
+  }
+}
+
+/* ========================== */
+/* 🔹 Responsive Navbar Toggle */
+/* ========================== */
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* لما الشاشة تصغر (تابلت أو موبايل) */
+@media (max-width: 992px) {
+  .Navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: block;
+    order: 5; /* عشان يكون في الاخر */
+    margin-right: auto;
+  }
+
+  /* اخفي الروابط افتراضيًا */
+  .Navbar-a,
+  .Navbar a button {
+    display: none;
+  }
+
+  /* لما تتفعل (لما تدوس الزر) */
+  .Navbar.active {
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: whitesmoke;
+    padding: 15px 20px;
+  }
+
+  /* الروابط تبقى تحت بعض */
+  .Navbar.active .Navbar-a,
+  .Navbar.active a button {
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin: 10px 0;
+  }
+
+  .Navbar.active a button {
+    align-self: center;
+  }
+}
+/* ========================== */
+/* 🔹 Responsive Navbar Toggle */
+/* ========================== */
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* لما الشاشة تصغر (تابلت أو موبايل) */
+@media (max-width: 992px) {
+  .Navbar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: block;
+    order: 5; /* عشان يكون في الاخر */
+    margin-right: auto;
+  }
+
+  /* اخفي الروابط افتراضيًا */
+  .Navbar-a,
+  .Navbar a button {
+    display: none;
+  }
+
+  /* لما تتفعل (لما تدوس الزر) */
+  .Navbar.active {
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    padding: 15px 20px;
+  }
+
+  /* الروابط تبقى تحت بعض */
+  .Navbar.active .Navbar-a,
+  .Navbar.active a button {
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin: 10px 0;
+  }
+
+  .Navbar.active a button {
+    align-self: center;
+  }
+}
+
+/* ============================= */
+/* 🔹 Responsive adjustments */
+/* ============================= */
+
+/* للشاشات المتوسطة (تابلت ولابتوب صغير) */
+@media (max-width: 992px) {
+  .h1 {
+    font-size: 45px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  #home {
+    height: auto;
+    padding: 100px 20px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card {
+    width: 80%;
+  }
+  #details {
+    height: auto;
+    padding-bottom: 50px;
+  }
+
+  #end {
+    height: auto;
+    padding: 40px 0;
+  }
+
+  .login {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+/* للشاشات الصغيرة (موبايل) */
+@media (max-width: 576px) {
+  .Navbar {
+    padding: 10px 15px;
+  }
+
+  .h1 {
+    font-size: 35px;
+    line-height: 1.4;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .btn {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  #home {
+    height: auto;
+    padding: 80px 15px;
+  }
+
+  .login {
+    height: auto;
+    width: 90%;
+    margin-top: 60px;
+    padding: 30px;
+  }
+
+  .login-h1 {
+    font-size: 22px;
+  }
+
+  .login-p {
+    font-size: 16px;
+  }
+}
+/* footer  responsive*/
+/* ============================== */
+/* 🔹 Responsive Footer Styling */
+/* ============================== */
+
+#footer {
+  background-color: white;
+  padding: 30px 15px;
+  border-top: 1px solid #ddd;
+}
+
+.About {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  direction: rtl;
+  text-align: right;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.about1 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.About1-h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #132440;
+}
+
+.About1-p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  font-family: "Cairo", sans-serif;
+}
+
+.about1-a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.about1-a:hover {
+  color: blue;
+  transform: translateX(-5px);
+}
+
+.About1-p1 {
+  font-size: 13px;
+  color: #222;
+}
+
+.About1-p1 span {
+  font-weight: bold;
+  color: #000;
+}
+
+.p p {
+  text-align: center;
+  font-size: 12px;
+  padding-top: 15px;
+  color: #555;
+  border-top: 1px solid #ddd;
+  margin-top: 25px;
+}
+
+/* ============================= */
+/* 📱 Responsive Design Footer */
+/* ============================= */
+
+/* للأجهزة المتوسطة (تابلت) */
+@media (max-width: 992px) {
+  .About {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .About1-h2 {
+    font-size: 16px;
+  }
+
+  .about1-a {
+    font-size: 13px;
+  }
+
+  .About1-p1 {
+    font-size: 12px;
+  }
+}
+
+/* للأجهزة الصغيرة (موبايل) */
+@media (max-width: 600px) {
+  .About {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: right;
+  }
+
+  .about1 {
+    align-items: flex-start;
+  }
+
+  .About1-h2 {
+    font-size: 15px;
+  }
+
+  .About1-p {
+    font-size: 13px;
+  }
+
+  .about1-a {
+    font-size: 13px;
+  }
+
+  .About1-p1 {
+    font-size: 12px;
+  }
+
+  .p p {
+    font-size: 11px;
+  }
+}

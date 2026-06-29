@@ -1,0 +1,199 @@
+/* ============================================================
+   1️⃣ التنسيقات العامة والخطوط (استبدال الخط بـ Cairo ليدعم العربي بشكل فخم)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f0f4f8; /* خلفية هادية ومريحة للعين ومتناسقة مع الداشبورد */
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    padding: 15px;
+    font-family: "Cairo", Arial, sans-serif;
+    direction: rtl;
+}
+
+/* حاوية الفورم الرئيسية */
+.box-form {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    width: 380px; /* زيادة العرض قليلاً ليعطي مساحة مريحة للعين والبيانات */
+    text-align: right;
+    border: 1px solid #e2e8f0;
+}
+
+.box-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #3498db; /* تعديل اللون الأزرق الهادئ ليكون مريحاً وأكثر احترافية */
+    font-weight: 700;
+}
+
+/* ============================================================
+   2️⃣ حقول الإدخال واللابل (Inputs & Labels)
+   ============================================================ */
+.mb-3 {
+    margin-bottom: 18px; /* تنسيق المسافات بين العناصر */
+}
+
+.box-form label, .form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.box-form input, .form-control {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 5px; /* الاعتماد على mb-3 للتنظيم */
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: right;
+    background-color: #f8fafc;
+    font-family: "Cairo", sans-serif;
+    transition: all 0.25s ease;
+}
+
+/* تأثير الـ Focus عند الكتابة داخل الحقل */
+.box-form input:focus, .form-control:focus {
+    outline: none;
+    border: 2px solid #3498db;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
+}
+
+/* ============================================================
+   3️⃣ التنسيق السحري لزر العين (Password Toggle Container)
+   ============================================================ */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* إعطاء مساحة يسارية بداخل خانة الباسورد لكي لا يغطي النص على العين */
+.password-wrapper input, 
+.password-wrapper .form-control {
+    padding-left: 45px !important; 
+    margin-bottom: 0 !important; /* إلغاء المارجن هنا لمنع اهتزاز الحاوية */
+}
+
+/* تثبيت العين في جهة اليسار وجعلها مستقلة عن باقي الأزرار */
+#togglePassword {
+    position: absolute;
+    left: 12px;
+    top: 50%; /* ينزل بمقدار نصف طول الحاوية */
+    transform: translateY(-50%); /* يرفع الزرار بمقدار نصف طوله هو ليصبح في المنتصف تماماً */
+    background: none !important;
+    border: none !important;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #64748b;
+    width: auto !important;
+    height: auto !important;
+    box-shadow: none !important;
+    z-index: 5;
+    display: flex; /* لضمان عدم وجود مسافات وهمية حول الإيموجي */
+    align-items: center;
+}
+
+#togglePassword:hover {
+    color: #3498db;
+}
+
+/* ============================================================
+   4️⃣ الأزرار والروابط (Buttons & Links)
+   ============================================================ */
+.box-form button, .btn-primary {
+    width: 100% !important;
+    padding: 12px;
+    background: linear-gradient(135deg, #3498db, #2980b9); /* تدرج أزرق فخم ومتناسق */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: "Cairo", sans-serif;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+}
+
+.box-form button:hover, .btn-primary:hover {
+    background: linear-gradient(135deg, #2980b9, #1f6391);
+    box-shadow: 0 6px 14px rgba(52, 152, 219, 0.3);
+}
+
+.box-form button:active {
+    transform: scale(0.98);
+}
+
+p, a, .login-box p, .login-box a {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+    font-family: "Cairo", sans-serif;
+}
+
+a, .login-box a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+a:hover, .login-box a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   5️⃣ الميديا كويري الذكية للموبايل والتابلت (Responsive)
+   ============================================================ */
+
+/* شاشات الموبايل (أقل من 600px) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .box-form {
+        width: 100%;
+        padding: 25px 20px;
+        border-radius: 12px;
+    }
+
+    .box-form h2 {
+        font-size: 20px;
+    }
+
+    .box-form input, .form-control {
+        padding: 11px;
+        font-size: 14px;
+    }
+
+    .box-form button, .btn-primary {
+        padding: 12px;
+        font-size: 15px;
+    }
+}
+
+/* شاشات التابلت المتوسطة */
+@media (min-width: 601px) and (max-width: 992px) {
+    .box-form {
+        max-width: 400px;
+    }
+}

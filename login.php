@@ -1,0 +1,141 @@
+<?php
+session_start();
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    $number = $_POST['number'];
+    $password = $_POST['password'];
+    $code = $_POST['access_code']; // استقبال الرمز الفريد من الفورم
+
+    // 1. الاتصال بقاعدة البيانات
+    $db = new mysqli("localhost", "root", "", "education_platform");
+
+    if($db->connect_error){
+        die("فشل الاتصال بقاعدة البيانات: " . $db->connect_error);
+    }
+
+    // تعيين الترميز ليدعم اللغة العربية بدون مشاكل
+    $db->set_charset("utf8mb4");
+
+    // حماية المدخلات لتجنب ثغرات SQL Injection
+    $number = $db->real_escape_string($number);
+    $password = $db->real_escape_string($password);
+    $code = $db->real_escape_string($code);
+
+    // 2. الاستعلام من جدول الطلاب للتأكد من الرقم والباسورد
+    $check = $db->query("SELECT * FROM students WHERE student_number='$number' AND password='$password'");
+
+    if($check && $check->num_rows > 0){
+
+        $data = $check->fetch_assoc();
+
+        // 3. التحقق من الرمز الفريد في جدول الأكواد
+        // لازم الرمز يكون مطابق لرقم الطالب وحالته غير مستخدم (is_used = 0)
+        $code_check = $db->query("SELECT * FROM login_codes WHERE student_number='$number' AND access_code='$code' AND is_used = 0");
+
+        if($code_check && $code_check->num_rows > 0){
+            
+            // الرمز صحيح! نقوم فوراً بتعطيله وتحويله إلى "مستخدم" لمنع الدخول به مجدداً
+            $db->query("UPDATE login_codes SET is_used = 1 WHERE student_number='$number' AND access_code='$code'");
+
+            // 4. تخزين بيانات الطالب في الجلسة (Session)
+            $_SESSION['student_id']   = $data['id']; 
+            $_SESSION['student_name'] = $data['student_name']; 
+            $_SESSION['grade_id']     = $data['grade_id']; 
+
+            // 🔑 المفتاح الأول: تفعيل الإذن بالانتقال إلى صفحة الـ index بشكل صارم
+            $_SESSION['allowed_to_index'] = true; 
+
+            // 5. توجيه الطالب إلى الصفحة الرئيسية للمنصة
+            header("Location: index.php");
+            exit;
+
+        } else {
+            // الرمز خطأ أو تم استخدامه من قبل من موبايل آخر
+            echo "<script>alert('❌ رمز الدخول غير صحيح، أو تم استخدامه مسبقاً! تواصل مع المدرس للحصول على رمز جديد.');</script>";
+        }
+
+    } else {
+        echo "<script>alert('❌ الرقم أو كلمة المرور غير صحيحة — تواصل مع المدرس');</script>";
+    }
+    
+    $db->close();
+}
+?>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل الدخول - منصة نور</title>
+    <link rel="stylesheet" href="login.css">
+  </head>
+  <body>
+    <form action="login.php" method="POST">
+      <div class="box-form">
+        <h2>سجل بياناتك</h2>
+
+        <div class="mb-3">
+          <label class="form-label">الرقم</label>
+          <input
+            type="text"
+            class="form-control"
+            name="number"
+            placeholder="الرقم"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">كلمة المرور</label>
+          <div class="password-wrapper" style="position: relative; display: flex; align-items: center;">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              id="passwordInput"
+              placeholder="*"
+              required
+              style="padding-left: 45px; width: 100%;" 
+            />
+            <button 
+              type="button" 
+              id="togglePassword" 
+              style="position: absolute; left: 12px; top:8px; background: none; border: none; cursor: pointer; font-size: 18px; padding: 0; margin: 0; color: #777; width: auto !important; box-shadow: none !important;"
+            >
+              🔒
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">رمز الدخول الفريد (يستخدم لمرة واحدة)</label>
+          <input
+            type="text"
+            class="form-control"
+            name="access_code"
+            placeholder="أدخل الرمز المستلم من المدرس"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">تسجيل</button>
+
+      </div>
+    </form>
+
+    <script>
+    const passwordInput = document.getElementById('passwordInput');
+    const togglePassword = document.getElementById('togglePassword');
+
+    togglePassword.addEventListener('click', function () {
+        // فحص نوع الحقل الحالي وتغييره
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        
+        // تغيير شكل الإيموجي تفاعلياً حسب الحالة
+        this.textContent = type === 'password' ? '🔒' : '🔓';
+    });
+    </script>
+  </body>
+</html>
