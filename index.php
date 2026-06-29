@@ -1,18 +1,4 @@
-<?php
-session_start();
 
-// 🛑 1. الحماية الحديدية: لو مش جاي من صفحة الـ login، اطرده فوراً
-if (!isset($_SESSION['student_id']) || !isset($_SESSION['allowed_to_index'])) {
-    header("Location: login.php");
-    exit;
-}
-
-// 🔑 2. المفتاح الثاني: الطالب فتح الاندكس بنجاح، نفتح له إذن الدخول لصفحة الفيديوهات
-$_SESSION['allowed_to_videos'] = true;
-
-// هنجيب اسم الصف الدراسي بشكل ديناميكي
-$grade_name = isset($_SESSION['grade_name']) ? $_SESSION['grade_name'] : "الصف الدراسي الخاص بك";
-?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
