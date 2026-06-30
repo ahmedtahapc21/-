@@ -114,12 +114,7 @@
         <label>اختر الفصل:</label>
         <select name="chapter_id" id="video_chapter" required>
             <option value="" disabled selected>برجاء اختيار السنة الدراسية أولاً</option>
-            <?php
-            $chapters = $mysqli->query("SELECT * FROM chapters ORDER BY id DESC");
-            while($c = $chapters->fetch_assoc()){
-                echo "<option value='{$c['id']}' data-grade='{$c['grade_id']}'>{$c['chapter_name']}</option>";
-            }
-            ?>
+           
         </select><br><br>
 
         <label>اسم الفيديو:</label>
@@ -135,77 +130,12 @@
 
     <h2>📚 الفصول الحالية</h2>
 
-    <?php
-    $chs = $mysqli->query("SELECT * FROM chapters");
-    while($c = $chs->fetch_assoc()){
-        echo "<div class='chapter'>
-                <h3>📘 {$c['chapter_name']} (كود الصف: {$c['grade_id']})</h3>";
-
-        $vids = $mysqli->query("SELECT * FROM videos WHERE chapter_id={$c['id']}");
-
-        if($vids->num_rows == 0){
-            echo "<p>لا يوجد فيديوهات</p></div>";
-            continue;
-        }
-
-        echo "<ul>";
-        while($v = $vids->fetch_assoc()){
-            echo "<li class='video-item'>🎥 {$v['video_title']} — 
-                    <a href='{$v['video_file']}' target='_blank'>مشاهدة</a>
-                  </li>";
-        }
-        echo "</ul></div>";
-    }
-    ?>
 
     <hr>
 
     <h2>👥 الطلاب المسجلون حالياً</h2>
     <div class="students-list">
-        <?php
-        $students = $mysqli->query("SELECT * FROM students ORDER BY id DESC");
 
-        if($students->num_rows == 0){
-            echo "<p>لا يوجد طلاب مسجلين حتى الآن.</p>";
-        } else {
-            echo "<table>
-                    <thead>
-                        <tr>
-                            <th>الاسم</th>
-                            <th>الرقم الشخصي / الهاتف</th>
-                            <th>كود السنة الدراسية (grade_id)</th>
-                            <th>حالة الرمز الفريد الحالي بالسيستم</th>
-                        </tr>
-                    </thead>
-                    <tbody>";
-            while($row = $students->fetch_assoc()){
-                $student_grade_id = $row['grade_id'] ?? 'غير محدد';
-                $s_num = $row['student_number'];
-                
-                // جلب آخر رمز تم توليده لهذا الطالب لمعرفة حالته (مستخدم أم لا)
-                $code_q = $mysqli->query("SELECT access_code, is_used FROM login_codes WHERE student_number='$s_num' ORDER BY id DESC LIMIT 1");
-                $code_status = "<span style='color: gray;'>لا يوجد رمز منشأ</span>";
-                
-                if($code_q && $code_q->num_rows > 0){
-                    $c_data = $code_q->fetch_assoc();
-                    if($c_data['is_used'] == 1){
-                        $code_status = "<span style='color: red; font-weight: bold;'>❌ مستخدم (الجهاز مقفل)</span>";
-                    } else {
-                        $code_status = "<span style='color: green; font-weight: bold;'>✔ متاح للاستخدام ({$c_data['access_code']})</span>";
-                    }
-                }
-
-                echo "<tr>
-                        <td>{$row['student_name']}</td>
-                        <td>{$row['student_number']}</td>
-                        <td>{$student_grade_id}</td>
-                        <td>{$code_status}</td>
-                      </tr>";
-            }
-            echo "    </tbody>
-                  </table>";
-        }
-        ?>
     </div>
 
 </div>
